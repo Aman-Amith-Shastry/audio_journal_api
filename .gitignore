@@ -1,1 +1,4 @@
-best_acc.pt
+*.pt
+venv/
+.venv/
+env/
