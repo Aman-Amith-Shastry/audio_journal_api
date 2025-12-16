@@ -4,12 +4,15 @@ import librosa
 from transformers import Wav2Vec2FeatureExtractor, WavLMModel
 from load_model import load_audio_waveform_from_url
 from get_metrics import compute_speech_metrics
+from huggingface_hub import hf_hub_download
 
-# Assuming 'model_weights.pth' is the path to your saved model state_dict
-model_path = 'best_acc.pt'
+model_path = hf_hub_download(
+    repo_id="aman-shastry/soundmind_model",
+    filename="best_acc.pt"
+)
 
-# Load the state_dict
-state_dict = torch.load(model_path, map_location=torch.device('cpu'))
+state_dict = torch.load(model_path, map_location="cpu")
+
 
 wavlm = WavLMModel.from_pretrained("microsoft/wavlm-base")
 
