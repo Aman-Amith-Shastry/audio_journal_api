@@ -39,12 +39,11 @@ class WavLMForEmotion(nn.Module):
         return logits
 
 device = torch.device("cpu")
-print(device)
 
-# if torch.backends.mps.is_available():
-#     device = torch.device("mps")
-# elif torch.cuda.is_available():
-#     device = torch.device("cuda")
+if torch.backends.mps.is_available():
+    device = torch.device("mps")
+elif torch.cuda.is_available():
+    device = torch.device("cuda")
 
 model = WavLMForEmotion()
 # Load the state_dict into the model instance
